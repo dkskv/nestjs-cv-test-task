@@ -1,0 +1,6 @@
+model Project {
+  id        Int     @id @default(autoincrement())
+  name      String
+  profileId Int
+  profile   Profile @relation(fields: [profileId], references: [id])
+}
