@@ -7,7 +7,9 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
+import { ExperienceDto } from '@/domains/experience/experience.types';
 import { ProjectDto } from '@/domains/projects/projects.types';
+import { ExperienceLoader } from './experience.loader';
 import { ProjectsLoader } from './projects.loader';
 import { ProfilesService } from './profiles.service';
 import { CreateProfileInput, ProfileDto } from './profiles.types';
@@ -17,6 +19,7 @@ export class ProfilesResolver {
   constructor(
     private readonly profilesService: ProfilesService,
     private readonly projectsLoader: ProjectsLoader,
+    private readonly experienceLoader: ExperienceLoader,
   ) {}
 
   @Query(() => [ProfileDto])
@@ -32,6 +35,11 @@ export class ProfilesResolver {
   @ResolveField(() => [ProjectDto])
   projects(@Parent() profile: ProfileDto) {
     return this.projectsLoader.load(profile.id);
+  }
+
+  @ResolveField(() => [ExperienceDto])
+  experience(@Parent() profile: ProfileDto) {
+    return this.experienceLoader.load(profile.id);
   }
 
   @Mutation(() => ProfileDto)

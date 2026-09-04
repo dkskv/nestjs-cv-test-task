@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { ExperienceModule } from '@/domains/experience/experience.module';
 import { ProjectsModule } from '@/domains/projects/projects.module';
 import { ProfilesModule } from '@/domains/profiles/profiles.module';
 import { PrismaModule } from '@/prisma/prisma.module';
@@ -15,6 +16,7 @@ import { PrismaModule } from '@/prisma/prisma.module';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     PrismaModule,
+    ExperienceModule,
     ProjectsModule,
     ProfilesModule,
   ],

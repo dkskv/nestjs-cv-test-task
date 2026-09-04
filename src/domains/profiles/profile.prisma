@@ -3,4 +3,5 @@ model Profile {
   name        String
   description String
   projects    Project[]
+  experience  Experience[]
 }

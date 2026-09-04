@@ -1,0 +1,7 @@
+model Experience {
+  id        Int     @id @default(autoincrement())
+  company   String
+  position  String
+  profileId Int
+  profile   Profile @relation(fields: [profileId], references: [id])
+}

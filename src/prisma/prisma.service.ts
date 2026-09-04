@@ -7,6 +7,10 @@ export class PrismaService implements OnModuleInit, OnModuleDestroy {
     // log: ['query'],
   });
 
+  get experience(): PrismaClient['experience'] {
+    return this.client.experience;
+  }
+
   get project(): PrismaClient['project'] {
     return this.client.project;
   }
