@@ -5,6 +5,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { ExperienceModule } from '@/domains/experience/experience.module';
 import { ProjectsModule } from '@/domains/projects/projects.module';
 import { ProfilesModule } from '@/domains/profiles/profiles.module';
+import { SkillsModule } from '@/domains/skills/skills.module';
 import { PrismaModule } from '@/prisma/prisma.module';
 
 @Module({
@@ -18,6 +19,7 @@ import { PrismaModule } from '@/prisma/prisma.module';
     PrismaModule,
     ExperienceModule,
     ProjectsModule,
+    SkillsModule,
     ProfilesModule,
   ],
 })

@@ -1,6 +1,7 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import { ExperienceDto } from '@/domains/experience/experience.types';
 import { ProjectDto } from '@/domains/projects/projects.types';
+import { SkillDto } from '@/domains/skills/skills.types';
 
 @ObjectType()
 export class ProfileDto {
@@ -18,6 +19,9 @@ export class ProfileDto {
 
   @Field(() => [ExperienceDto])
   experience!: ExperienceDto[];
+
+  @Field(() => [SkillDto])
+  skills!: SkillDto[];
 }
 
 @InputType()
