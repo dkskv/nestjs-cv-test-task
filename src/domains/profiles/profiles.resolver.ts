@@ -8,9 +8,11 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { ExperienceDto } from '@/domains/experience/experience.types';
+import { LinkDto } from '@/shared/types/link.types';
 import { ProjectDto } from '@/domains/projects/projects.types';
 import { SkillDto } from '@/domains/skills/skills.types';
 import { ExperienceLoader } from './loaders/experience.loader';
+import { ProfileLinkLoader } from './loaders/profile-link.loader';
 import { ProjectsLoader } from './loaders/projects.loader';
 import { SkillsLoader } from './loaders/skills.loader';
 import { ProfilesService } from './profiles.service';
@@ -21,6 +23,7 @@ export class ProfilesResolver {
   constructor(
     private readonly profilesService: ProfilesService,
     private readonly projectsLoader: ProjectsLoader,
+    private readonly linksLoader: ProfileLinkLoader,
     private readonly experienceLoader: ExperienceLoader,
     private readonly skillsLoader: SkillsLoader,
   ) {}
@@ -33,6 +36,11 @@ export class ProfilesResolver {
   @Query(() => ProfileDto)
   profile(@Args('id', { type: () => Int }) id: number) {
     return this.profilesService.findOne(id);
+  }
+
+  @ResolveField(() => [LinkDto])
+  links(@Parent() profile: ProfileDto) {
+    return this.linksLoader.load(profile.id);
   }
 
   @ResolveField(() => [ProjectDto])

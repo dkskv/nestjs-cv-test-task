@@ -3,6 +3,7 @@ model Profile {
   name        String
   description String
   projects    Project[]
+  links       ProfileLink[]
   experience  Experience[]
   skills      Skill[]
 }

@@ -1,7 +1,7 @@
-model Project {
+model ProfileLink {
   id        Int     @id @default(autoincrement())
   name      String
+  url       String
   profileId Int
   profile   Profile @relation(fields: [profileId], references: [id])
-  link      ProjectLink?
 }

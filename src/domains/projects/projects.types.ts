@@ -1,4 +1,5 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
+import { LinkDto } from '@/shared/types/link.types';
 
 @ObjectType()
 export class ProjectDto {
@@ -7,6 +8,9 @@ export class ProjectDto {
 
   @Field()
   name!: string;
+
+  @Field(() => LinkDto, { nullable: true })
+  link?: LinkDto | null;
 }
 
 @InputType()

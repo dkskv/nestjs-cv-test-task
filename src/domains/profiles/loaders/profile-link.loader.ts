@@ -1,0 +1,20 @@
+import DataLoader from 'dataloader';
+import { Injectable, Scope } from '@nestjs/common';
+import { ProfileLinksService } from '@/domains/profile-links/profile-links.service';
+import { LinkDto } from '@/shared/types/link.types';
+import { groupByToMap } from '@/shared/lib/group-by-to-map';
+
+@Injectable({ scope: Scope.REQUEST })
+export class ProfileLinkLoader extends DataLoader<number, LinkDto[]> {
+  constructor(profileLinksService: ProfileLinksService) {
+    super(async (profileIds) => {
+      const links = await profileLinksService.findByProfileIds(profileIds);
+
+      const linksByProfileId = groupByToMap(links, (link) => link.profileId);
+
+      return profileIds.map(
+        (profileId) => linksByProfileId.get(profileId) ?? [],
+      );
+    });
+  }
+}

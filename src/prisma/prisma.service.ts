@@ -15,6 +15,14 @@ export class PrismaService implements OnModuleInit, OnModuleDestroy {
     return this.client.skill;
   }
 
+  get profileLink(): PrismaClient['profileLink'] {
+    return this.client.profileLink;
+  }
+
+  get projectLink(): PrismaClient['projectLink'] {
+    return this.client.projectLink;
+  }
+
   get project(): PrismaClient['project'] {
     return this.client.project;
   }

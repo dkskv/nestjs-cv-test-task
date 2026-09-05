@@ -1,10 +1,27 @@
-import { Args, Int, Mutation, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Int,
+  Mutation,
+  Parent,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
+import { LinkDto } from '@/shared/types/link.types';
+import { ProjectLinkLoader } from '@/domains/project-links/project-link.loader';
 import { ProjectsService } from './projects.service';
 import { CreateProjectInput, ProjectDto } from './projects.types';
 
 @Resolver(() => ProjectDto)
 export class ProjectsResolver {
-  constructor(private readonly projectsService: ProjectsService) {}
+  constructor(
+    private readonly projectsService: ProjectsService,
+    private readonly projectLinkLoader: ProjectLinkLoader,
+  ) {}
+
+  @ResolveField(() => LinkDto, { nullable: true })
+  link(@Parent() project: ProjectDto) {
+    return this.projectLinkLoader.load(project.id);
+  }
 
   @Mutation(() => ProjectDto)
   createProject(@Args('input') input: CreateProjectInput) {
