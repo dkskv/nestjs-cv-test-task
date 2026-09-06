@@ -1,4 +1,10 @@
-import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
+import {
+  Field,
+  GraphQLISODateTime,
+  InputType,
+  Int,
+  ObjectType,
+} from '@nestjs/graphql';
 
 @ObjectType()
 export class ExperienceDto {
@@ -10,6 +16,15 @@ export class ExperienceDto {
 
   @Field()
   position!: string;
+
+  @Field(() => GraphQLISODateTime)
+  startedAt!: Date;
+
+  @Field(() => GraphQLISODateTime, { nullable: true })
+  endedAt!: Date | null;
+
+  @Field()
+  achievements!: string;
 }
 
 @InputType()
@@ -19,6 +34,15 @@ export class CreateExperienceInput {
 
   @Field()
   position!: string;
+
+  @Field(() => GraphQLISODateTime)
+  startedAt!: Date;
+
+  @Field(() => GraphQLISODateTime, { nullable: true })
+  endedAt?: Date | null;
+
+  @Field({ nullable: true })
+  achievements?: string;
 
   @Field(() => Int)
   profileId!: number;

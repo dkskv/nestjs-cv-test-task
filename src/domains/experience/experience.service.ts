@@ -11,12 +11,15 @@ export class ExperienceService {
   }
 
   findAll() {
-    return this.prisma.experience.findMany();
+    return this.prisma.experience.findMany({
+      orderBy: { startedAt: 'desc' },
+    });
   }
 
   findByProfileIds(profileIds: readonly number[]) {
     return this.prisma.experience.findMany({
       where: { profileId: { in: Array.from(profileIds) } },
+      orderBy: { startedAt: 'desc' },
     });
   }
 

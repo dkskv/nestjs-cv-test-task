@@ -1,7 +1,10 @@
 model Experience {
-  id        Int     @id @default(autoincrement())
-  company   String
-  position  String
-  profileId Int
-  profile   Profile @relation(fields: [profileId], references: [id])
+  id           Int       @id @default(autoincrement())
+  company      String
+  position     String
+  startedAt    DateTime 
+  endedAt      DateTime?
+  achievements String    @default("")
+  profileId    Int
+  profile      Profile   @relation(fields: [profileId], references: [id])
 }
