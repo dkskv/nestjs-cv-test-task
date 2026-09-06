@@ -1,13 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { CreateExperienceInput } from './experience.dto';
+
+interface CreateExperienceData {
+  company: string;
+  position: string;
+  startedAt: Date;
+  endedAt?: Date | null;
+  achievements?: string;
+  profileId: number;
+}
 
 @Injectable()
 export class ExperienceService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(input: CreateExperienceInput) {
-    return this.prisma.experience.create({ data: input });
+  create(data: CreateExperienceData) {
+    return this.prisma.experience.create({ data });
   }
 
   findAll() {

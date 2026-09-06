@@ -1,6 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { CreateProfileLinkInput } from './profile-links.dto';
+
+interface CreateProfileLinkData {
+  name: string;
+  url: string;
+  profileId: number;
+}
 
 @Injectable()
 export class ProfileLinksService {
@@ -12,8 +17,8 @@ export class ProfileLinksService {
     });
   }
 
-  create(input: CreateProfileLinkInput) {
-    return this.prisma.profileLink.create({ data: input });
+  create(data: CreateProfileLinkData) {
+    return this.prisma.profileLink.create({ data });
   }
 
   remove(id: number) {

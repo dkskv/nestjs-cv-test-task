@@ -1,13 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { CreateProfileInput } from './profiles.dto';
+
+interface CreateProfileData {
+  name: string;
+  description: string;
+}
 
 @Injectable()
 export class ProfilesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(input: CreateProfileInput) {
-    return this.prisma.profile.create({ data: input });
+  create(data: CreateProfileData) {
+    return this.prisma.profile.create({ data });
   }
 
   findAll() {

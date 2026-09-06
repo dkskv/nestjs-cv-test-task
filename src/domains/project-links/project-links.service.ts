@@ -1,6 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { CreateProjectLinkInput } from './project-links.dto';
+
+interface CreateProjectLinkData {
+  name: string;
+  url: string;
+  projectId: number;
+}
 
 @Injectable()
 export class ProjectLinksService {
@@ -12,8 +17,8 @@ export class ProjectLinksService {
     });
   }
 
-  create(input: CreateProjectLinkInput) {
-    return this.prisma.projectLink.create({ data: input });
+  create(data: CreateProjectLinkData) {
+    return this.prisma.projectLink.create({ data });
   }
 
   remove(id: number) {
