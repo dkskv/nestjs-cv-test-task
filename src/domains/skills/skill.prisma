@@ -1,5 +1,5 @@
 model Skill {
   id       Int       @id @default(autoincrement())
-  name     String
+  name     String    @unique
   profiles Profile[]
 }
