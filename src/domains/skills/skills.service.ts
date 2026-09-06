@@ -1,19 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { CreateSkillInput } from './skills.dto';
 
 @Injectable()
 export class SkillsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create({ name, profileIds }: CreateSkillInput) {
-    return this.prisma.skill.create({
-      data: {
-        name,
-        profiles: {
-          connect: profileIds.map((id) => ({ id })),
-        },
-      },
+  async replaceProfileSkills(profileId: number, names: string[]) {
+    const uniqueNames = [...new Set(names)];
+
+    return this.prisma.$transaction(async (tx) => {
+      const skills = await Promise.all(
+        uniqueNames.map((name) =>
+          tx.skill.upsert({
+            where: { name },
+            create: { name },
+            update: {},
+          }),
+        ),
+      );
+
+      const profile = await tx.profile.update({
+        where: { id: profileId },
+        data: { skills: { set: skills.map(({ id }) => ({ id })) } },
+        include: { skills: true },
+      });
+
+      return profile.skills;
     });
   }
 
@@ -24,9 +36,7 @@ export class SkillsService {
   findByProfileIds(profileIds: readonly number[]) {
     return this.prisma.skill.findMany({
       where: {
-        profiles: {
-          some: { id: { in: Array.from(profileIds) } },
-        },
+        profiles: { some: { id: { in: Array.from(profileIds) } } },
       },
       include: {
         profiles: {
