@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { CreateExperienceInput } from './experience.types';
+import { CreateExperienceInput } from './experience.dto';
 
 @Injectable()
 export class ExperienceService {

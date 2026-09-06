@@ -1,7 +1,7 @@
 import { Args, Int, Mutation, Resolver } from '@nestjs/graphql';
-import { LinkDto } from '@/shared/types/link.types';
+import { LinkDto } from '@/shared/dto/link.dto';
 import { ProfileLinksService } from './profile-links.service';
-import { CreateProfileLinkInput } from './profile-links.types';
+import { CreateProfileLinkInput } from './profile-links.dto';
 
 @Resolver(() => LinkDto)
 export class ProfileLinksResolver {

@@ -1,6 +1,6 @@
 import DataLoader from 'dataloader';
 import { Injectable, Scope } from '@nestjs/common';
-import { ExperienceDto } from '@/domains/experience/experience.types';
+import { ExperienceDto } from '@/domains/experience/experience.dto';
 import { ExperienceService } from '@/domains/experience/experience.service';
 import { groupByToMap } from '@/shared/lib/group-by-to-map';
 

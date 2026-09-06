@@ -1,6 +1,6 @@
 import { Args, Int, Mutation, Resolver } from '@nestjs/graphql';
 import { ExperienceService } from './experience.service';
-import { CreateExperienceInput, ExperienceDto } from './experience.types';
+import { CreateExperienceInput, ExperienceDto } from './experience.dto';
 
 @Resolver(() => ExperienceDto)
 export class ExperienceResolver {

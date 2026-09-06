@@ -1,6 +1,6 @@
 import DataLoader from 'dataloader';
 import { Injectable, Scope } from '@nestjs/common';
-import { SkillDto } from '@/domains/skills/skills.types';
+import { SkillDto } from '@/domains/skills/skills.dto';
 import { SkillsService } from '@/domains/skills/skills.service';
 import { groupByManyToMap } from '@/shared/lib/group-by-many-to-map';
 

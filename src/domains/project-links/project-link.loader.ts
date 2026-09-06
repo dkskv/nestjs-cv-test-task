@@ -1,7 +1,7 @@
 import DataLoader from 'dataloader';
 import { Injectable, Scope } from '@nestjs/common';
 import { ProjectLinksService } from './project-links.service';
-import { LinkDto } from '@/shared/types/link.types';
+import { LinkDto } from '@/shared/dto/link.dto';
 
 @Injectable({ scope: Scope.REQUEST })
 export class ProjectLinkLoader extends DataLoader<number, LinkDto | null> {

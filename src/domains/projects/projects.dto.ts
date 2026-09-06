@@ -1,5 +1,5 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import { LinkDto } from '@/shared/types/link.types';
+import { LinkDto } from '@/shared/dto/link.dto';
 
 @ObjectType()
 export class ProjectDto {

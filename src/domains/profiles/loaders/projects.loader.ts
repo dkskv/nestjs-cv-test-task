@@ -1,6 +1,6 @@
 import DataLoader from 'dataloader';
 import { Injectable, Scope } from '@nestjs/common';
-import { ProjectDto } from '@/domains/projects/projects.types';
+import { ProjectDto } from '@/domains/projects/projects.dto';
 import { ProjectsService } from '@/domains/projects/projects.service';
 import { groupByToMap } from '@/shared/lib/group-by-to-map';
 

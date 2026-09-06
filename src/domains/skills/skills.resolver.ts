@@ -1,6 +1,6 @@
 import { Args, Int, Mutation, Resolver } from '@nestjs/graphql';
 import { SkillsService } from './skills.service';
-import { CreateSkillInput, SkillDto } from './skills.types';
+import { CreateSkillInput, SkillDto } from './skills.dto';
 
 @Resolver(() => SkillDto)
 export class SkillsResolver {

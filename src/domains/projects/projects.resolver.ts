@@ -6,10 +6,10 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { LinkDto } from '@/shared/types/link.types';
+import { LinkDto } from '@/shared/dto/link.dto';
 import { ProjectLinkLoader } from '@/domains/project-links/project-link.loader';
 import { ProjectsService } from './projects.service';
-import { CreateProjectInput, ProjectDto } from './projects.types';
+import { CreateProjectInput, ProjectDto } from './projects.dto';
 
 @Resolver(() => ProjectDto)
 export class ProjectsResolver {

@@ -1,8 +1,8 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import { ExperienceDto } from '@/domains/experience/experience.types';
-import { ProjectDto } from '@/domains/projects/projects.types';
-import { SkillDto } from '@/domains/skills/skills.types';
-import { LinkDto } from '@/shared/types/link.types';
+import { ExperienceDto } from '@/domains/experience/experience.dto';
+import { ProjectDto } from '@/domains/projects/projects.dto';
+import { SkillDto } from '@/domains/skills/skills.dto';
+import { LinkDto } from '@/shared/dto/link.dto';
 
 @ObjectType()
 export class ProfileDto {
