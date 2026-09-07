@@ -1,8 +1,15 @@
 import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
-import { ExperienceDto } from '@/domains/experience/experience.dto';
-import { ProjectDto } from '@/domains/projects/projects.dto';
-import { SkillDto } from '@/domains/skills/skills.dto';
+import {
+  ExperienceDto,
+  ExperiencesPatchInput,
+} from '@/domains/experiences/experiences.dto';
+import {
+  ProjectDto,
+  ProjectsPatchInput,
+} from '@/domains/projects/projects.dto';
+import { SkillDto, SkillsPatchInput } from '@/domains/skills/skills.dto';
 import { LinkDto } from '@/shared/dto/link.dto';
+import { ProfileLinksPatchInput } from '../profile-links/profile-links.dto';
 
 @ObjectType()
 export class ProfileDto {
@@ -22,17 +29,35 @@ export class ProfileDto {
   projects!: ProjectDto[];
 
   @Field(() => [ExperienceDto])
-  experience!: ExperienceDto[];
+  experiences!: ExperienceDto[];
 
   @Field(() => [SkillDto])
   skills!: SkillDto[];
 }
 
 @InputType()
-export class CreateProfileInput {
+export class ProfileCreateInput {
   @Field()
   name!: string;
+}
 
-  @Field()
-  description!: string;
+@InputType()
+export class ProfileUpdateInput {
+  @Field({ nullable: true })
+  name?: string;
+
+  @Field({ nullable: true })
+  description?: string;
+
+  @Field(() => ProfileLinksPatchInput, { nullable: true })
+  links?: ProfileLinksPatchInput;
+
+  @Field(() => ProjectsPatchInput, { nullable: true })
+  projects?: ProjectsPatchInput;
+
+  @Field(() => ExperiencesPatchInput, { nullable: true })
+  experiences?: ExperiencesPatchInput;
+
+  @Field(() => SkillsPatchInput, { nullable: true })
+  skills?: SkillsPatchInput;
 }

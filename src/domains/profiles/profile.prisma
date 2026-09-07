@@ -1,7 +1,7 @@
 model Profile {
   id          Int       @id @default(autoincrement())
   name        String
-  description String
+  description String    @default("")
   projects    Project[]
   links       ProfileLink[]
   experience  Experience[]

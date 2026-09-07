@@ -7,16 +7,20 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { ExperienceDto } from '@/domains/experience/experience.dto';
+import { ExperienceDto } from '@/domains/experiences/experiences.dto';
 import { LinkDto } from '@/shared/dto/link.dto';
 import { ProjectDto } from '@/domains/projects/projects.dto';
 import { SkillDto } from '@/domains/skills/skills.dto';
-import { ExperienceLoader } from './loaders/experience.loader';
+import { ExperiencesLoader } from './loaders/experiences.loader';
 import { ProfileLinkLoader } from './loaders/profile-link.loader';
 import { ProjectsLoader } from './loaders/projects.loader';
 import { SkillsLoader } from './loaders/skills.loader';
 import { ProfilesService } from './profiles.service';
-import { CreateProfileInput, ProfileDto } from './profiles.dto';
+import {
+  ProfileCreateInput,
+  ProfileDto,
+  ProfileUpdateInput,
+} from './profiles.dto';
 
 @Resolver(() => ProfileDto)
 export class ProfilesResolver {
@@ -24,7 +28,7 @@ export class ProfilesResolver {
     private readonly profilesService: ProfilesService,
     private readonly projectsLoader: ProjectsLoader,
     private readonly linksLoader: ProfileLinkLoader,
-    private readonly experienceLoader: ExperienceLoader,
+    private readonly experiencesLoader: ExperiencesLoader,
     private readonly skillsLoader: SkillsLoader,
   ) {}
 
@@ -49,8 +53,8 @@ export class ProfilesResolver {
   }
 
   @ResolveField(() => [ExperienceDto])
-  experience(@Parent() profile: ProfileDto) {
-    return this.experienceLoader.load(profile.id);
+  experiences(@Parent() profile: ProfileDto) {
+    return this.experiencesLoader.load(profile.id);
   }
 
   @ResolveField(() => [SkillDto])
@@ -59,12 +63,24 @@ export class ProfilesResolver {
   }
 
   @Mutation(() => ProfileDto)
-  createProfile(@Args('input') input: CreateProfileInput) {
+  createProfile(@Args('input') input: ProfileCreateInput) {
     return this.profilesService.create(input);
   }
 
   @Mutation(() => ProfileDto)
-  removeProfile(@Args('id', { type: () => Int }) id: number) {
-    return this.profilesService.remove(id);
+  async updateProfile(
+    @Args('id', { type: () => Int }) id: number,
+    @Args('input') input: ProfileUpdateInput,
+  ) {
+    await this.profilesService.update(id, input);
+
+    return this.profilesService.findOne(id);
+  }
+
+  @Mutation(() => Boolean)
+  async removeProfile(@Args('id', { type: () => Int }) id: number) {
+    await this.profilesService.delete(id);
+
+    return true;
   }
 }

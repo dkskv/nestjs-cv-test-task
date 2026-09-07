@@ -1,13 +1,28 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
+import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
-export class CreateProjectLinkInput {
+export class ProjectLinkCreateInput {
   @Field()
   name!: string;
 
   @Field()
   url!: string;
+}
 
-  @Field(() => Int)
-  projectId!: number;
+@InputType()
+export class ProjectLinkUpdateInput {
+  @Field({ nullable: true })
+  name?: string;
+
+  @Field({ nullable: true })
+  url?: string;
+}
+
+@InputType({ isOneOf: true })
+export class ProjectLinkPatchInput {
+  @Field(() => ProjectLinkCreateInput, { nullable: true })
+  create!: ProjectLinkCreateInput;
+
+  @Field(() => ProjectLinkUpdateInput, { nullable: true })
+  update!: ProjectLinkUpdateInput;
 }

@@ -1,4 +1,4 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class SkillDto {
@@ -7,4 +7,13 @@ export class SkillDto {
 
   @Field()
   name!: string;
+}
+
+@InputType()
+export class SkillsPatchInput {
+  @Field(() => [String], { nullable: true })
+  create?: string[];
+
+  @Field(() => [String], { nullable: true })
+  delete?: string[];
 }

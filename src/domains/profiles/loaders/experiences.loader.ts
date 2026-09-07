@@ -1,14 +1,14 @@
 import DataLoader from 'dataloader';
 import { Injectable, Scope } from '@nestjs/common';
-import { ExperienceDto } from '@/domains/experience/experience.dto';
-import { ExperienceService } from '@/domains/experience/experience.service';
+import { ExperienceDto } from '@/domains/experiences/experiences.dto';
+import { ExperiencesService } from '@/domains/experiences/experiences.service';
 import { groupByToMap } from '@/shared/lib/group-by-to-map';
 
 @Injectable({ scope: Scope.REQUEST })
-export class ExperienceLoader extends DataLoader<number, ExperienceDto[]> {
-  constructor(experienceService: ExperienceService) {
+export class ExperiencesLoader extends DataLoader<number, ExperienceDto[]> {
+  constructor(experiencesService: ExperiencesService) {
     super(async (profileIds) => {
-      const experience = await experienceService.findByProfileIds(profileIds);
+      const experience = await experiencesService.findByProfileIds(profileIds);
 
       const experienceByProfileId = groupByToMap(
         experience,

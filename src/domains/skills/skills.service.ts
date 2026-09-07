@@ -1,36 +1,48 @@
 import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from '@/prisma/prisma.service';
+
+export interface SkillsPatchData {
+  create?: string[];
+  delete?: string[];
+}
 
 @Injectable()
 export class SkillsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async replaceProfileSkills(profileId: number, names: string[]) {
-    const uniqueNames = [...new Set(names)];
+  async patchForProfile(
+    profileId: number,
+    patch: SkillsPatchData,
+    tx: Prisma.TransactionClient,
+  ) {
+    const createNames = [...new Set(patch.create ?? [])];
+    const deleteNames = [...new Set(patch.delete ?? [])];
 
-    return this.prisma.$transaction(async (tx) => {
-      const skills = await Promise.all(
-        uniqueNames.map((name) =>
-          tx.skill.upsert({
-            where: { name },
-            create: { name },
-            update: {},
-          }),
-        ),
-      );
-
-      const profile = await tx.profile.update({
+    if (createNames.length > 0) {
+      await tx.profile.update({
         where: { id: profileId },
-        data: { skills: { set: skills.map(({ id }) => ({ id })) } },
-        include: { skills: true },
+        data: {
+          skills: {
+            connectOrCreate: createNames.map((name) => ({
+              where: { name },
+              create: { name },
+            })),
+          },
+        },
       });
+    }
 
-      return profile.skills;
-    });
-  }
-
-  findAll() {
-    return this.prisma.skill.findMany();
+    if (deleteNames.length > 0) {
+      await tx.profile.update({
+        where: { id: profileId },
+        data: {
+          skills: {
+            disconnect: deleteNames.map((name) => ({ name })),
+          },
+        },
+      });
+    }
   }
 
   findByProfileIds(profileIds: readonly number[]) {
@@ -44,13 +56,5 @@ export class SkillsService {
         },
       },
     });
-  }
-
-  findOne(id: number) {
-    return this.prisma.skill.findUniqueOrThrow({ where: { id } });
-  }
-
-  remove(id: number) {
-    return this.prisma.skill.delete({ where: { id } });
   }
 }
