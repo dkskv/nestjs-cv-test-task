@@ -6,5 +6,5 @@ model Experience {
   endedAt      DateTime?
   achievements String    @default("")
   profileId    Int
-  profile      Profile   @relation(fields: [profileId], references: [id])
+  profile      Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }

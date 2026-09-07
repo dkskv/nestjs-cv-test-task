@@ -3,5 +3,5 @@ model ProfileLink {
   name      String
   url       String
   profileId Int
-  profile   Profile @relation(fields: [profileId], references: [id])
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
