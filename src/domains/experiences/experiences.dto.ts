@@ -1,10 +1,5 @@
-import {
-  Field,
-  GraphQLISODateTime,
-  InputType,
-  Int,
-  ObjectType,
-} from '@nestjs/graphql';
+import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
+import { GraphQLDate } from 'graphql-scalars';
 
 @ObjectType()
 export class ExperienceDto {
@@ -17,10 +12,10 @@ export class ExperienceDto {
   @Field()
   position!: string;
 
-  @Field(() => GraphQLISODateTime)
+  @Field(() => GraphQLDate)
   startedAt!: Date;
 
-  @Field(() => GraphQLISODateTime, { nullable: true })
+  @Field(() => GraphQLDate, { nullable: true })
   endedAt!: Date | null;
 
   @Field()
@@ -35,10 +30,10 @@ export class ExperienceCreateInput {
   @Field()
   position!: string;
 
-  @Field(() => GraphQLISODateTime)
+  @Field(() => GraphQLDate)
   startedAt!: Date;
 
-  @Field(() => GraphQLISODateTime, { nullable: true })
+  @Field(() => GraphQLDate, { nullable: true })
   endedAt?: Date | null;
 
   @Field({ nullable: true })
@@ -56,10 +51,10 @@ export class ExperienceUpdateInput {
   @Field({ nullable: true })
   position?: string;
 
-  @Field(() => GraphQLISODateTime, { nullable: true })
+  @Field(() => GraphQLDate, { nullable: true })
   startedAt?: Date;
 
-  @Field(() => GraphQLISODateTime, { nullable: true })
+  @Field(() => GraphQLDate, { nullable: true })
   endedAt?: Date | null;
 
   @Field({ nullable: true })
