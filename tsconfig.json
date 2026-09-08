@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@prisma/*": ["./prisma/*"]
     },
-    "module": "node16",
-    "moduleResolution": "node16",
+    "module": "esnext",
     "esModuleInterop": true,
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "target": "ES2023",
     "sourceMap": true,
     "rootDir": ".",
     "outDir": "./dist",
@@ -21,6 +21,5 @@
     "noImplicitAny": true,
     "strictBindCallApply": true,
     "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src/**/*.ts", "prisma/**/*.ts", "prisma.config.ts"]
+  }
 }

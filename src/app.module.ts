@@ -7,13 +7,14 @@ import { ProjectsModule } from '@/domains/projects/projects.module';
 import { ProfilesModule } from '@/domains/profiles/profiles.module';
 import { SkillsModule } from '@/domains/skills/skills.module';
 import { PrismaModule } from '@/prisma/prisma.module';
+import 'dotenv/config';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
-      playground: false,
+      graphiql: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     PrismaModule,

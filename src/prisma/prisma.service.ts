@@ -1,47 +1,30 @@
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/generated/client';
+import { PrismaPg } from '@prisma/adapter-pg';
 
 @Injectable()
-export class PrismaService implements OnModuleInit, OnModuleDestroy {
-  private readonly client = new PrismaClient({
-    // log: ['query'],
-  });
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  constructor() {
+    const adapter = new PrismaPg({
+      connectionString: process.env.DATABASE_URL,
+      user: 'postgres',
+      password: 'postgres',
+    });
 
-  get experience(): PrismaClient['experience'] {
-    return this.client.experience;
+    super({
+      adapter,
+      // log: ['query'],
+    });
   }
 
-  get skill(): PrismaClient['skill'] {
-    return this.client.skill;
+  async onModuleInit(): Promise<void> {
+    await this.$connect();
   }
 
-  get profileLink(): PrismaClient['profileLink'] {
-    return this.client.profileLink;
-  }
-
-  get projectLink(): PrismaClient['projectLink'] {
-    return this.client.projectLink;
-  }
-
-  get project(): PrismaClient['project'] {
-    return this.client.project;
-  }
-
-  get profile(): PrismaClient['profile'] {
-    return this.client.profile;
-  }
-
-  $transaction<T>(
-    callback: (transaction: Prisma.TransactionClient) => Promise<T>,
-  ): Promise<T> {
-    return this.client.$transaction(callback);
-  }
-
-  async onModuleInit() {
-    await this.client.$connect();
-  }
-
-  async onModuleDestroy() {
-    await this.client.$disconnect();
+  async onModuleDestroy(): Promise<void> {
+    await this.$disconnect();
   }
 }
