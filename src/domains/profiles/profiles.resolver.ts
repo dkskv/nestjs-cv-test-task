@@ -12,7 +12,7 @@ import { LinkDto } from '@/shared/dto/link.dto';
 import { ProjectDto } from '@/domains/projects/projects.dto';
 import { SkillDto } from '@/domains/skills/skills.dto';
 import { ExperiencesLoader } from './loaders/experiences.loader';
-import { ProfileLinkLoader } from './loaders/profile-link.loader';
+import { ProfileLinksLoader } from './loaders/profile-links.loader';
 import { ProjectsLoader } from './loaders/projects.loader';
 import { SkillsLoader } from './loaders/skills.loader';
 import { ProfilesService } from './profiles.service';
@@ -27,7 +27,7 @@ export class ProfilesResolver {
   constructor(
     private readonly profilesService: ProfilesService,
     private readonly projectsLoader: ProjectsLoader,
-    private readonly linksLoader: ProfileLinkLoader,
+    private readonly linksLoader: ProfileLinksLoader,
     private readonly experiencesLoader: ExperiencesLoader,
     private readonly skillsLoader: SkillsLoader,
   ) {}

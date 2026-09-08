@@ -5,7 +5,7 @@ import { LinkDto } from '@/shared/dto/link.dto';
 import { groupByToMap } from '@/shared/lib/group-by-to-map';
 
 @Injectable({ scope: Scope.REQUEST })
-export class ProfileLinkLoader extends DataLoader<number, LinkDto[]> {
+export class ProfileLinksLoader extends DataLoader<number, LinkDto[]> {
   constructor(profileLinksService: ProfileLinksService) {
     super(async (profileIds) => {
       const links = await profileLinksService.findByProfileIds(profileIds);

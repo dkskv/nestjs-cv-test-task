@@ -4,7 +4,7 @@ import { ProfileLinksModule } from '@/domains/profile-links/profile-links.module
 import { ProjectsModule } from '@/domains/projects/projects.module';
 import { SkillsModule } from '@/domains/skills/skills.module';
 import { ExperiencesLoader } from './loaders/experiences.loader';
-import { ProfileLinkLoader } from './loaders/profile-link.loader';
+import { ProfileLinksLoader } from './loaders/profile-links.loader';
 import { ProjectsLoader } from './loaders/projects.loader';
 import { SkillsLoader } from './loaders/skills.loader';
 import { ProfilesResolver } from './profiles.resolver';
@@ -21,7 +21,7 @@ import { ProfilesService } from './profiles.service';
     ProfilesResolver,
     ProfilesService,
     ExperiencesLoader,
-    ProfileLinkLoader,
+    ProfileLinksLoader,
     ProjectsLoader,
     SkillsLoader,
   ],
