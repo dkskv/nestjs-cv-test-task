@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { Prisma } from '@prisma/generated/client';
+import { Prisma } from '@prisma-generated/client';
 
 interface ProfileLinkCreateData {
   name: string;

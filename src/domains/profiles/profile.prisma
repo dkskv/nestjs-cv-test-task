@@ -4,6 +4,6 @@ model Profile {
   description String    @default("")
   projects    Project[]
   links       ProfileLink[]
-  experience  Experience[]
+  experiences  Experience[]
   skills      Skill[]
 }

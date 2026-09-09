@@ -8,10 +8,10 @@ import { groupByToMap } from '@/shared/lib/group-by-to-map';
 export class ExperiencesLoader extends DataLoader<number, ExperienceDto[]> {
   constructor(experiencesService: ExperiencesService) {
     super(async (profileIds) => {
-      const experience = await experiencesService.findByProfileIds(profileIds);
+      const experiences = await experiencesService.findByProfileIds(profileIds);
 
       const experienceByProfileId = groupByToMap(
-        experience,
+        experiences,
         (experience) => experience.profileId,
       );
 

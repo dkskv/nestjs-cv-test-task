@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/generated/client';
+import { PrismaClient } from '@prisma-generated/client';
 import { profileSeed } from './seed-data';
 import { PrismaPg } from '@prisma/adapter-pg';
 
@@ -27,7 +27,7 @@ async function main() {
           link: { create: project.link },
         })),
       },
-      experience: {
+      experiences: {
         create: profileSeed.experiences,
       },
       links: {

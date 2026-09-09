@@ -1,4 +1,4 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, InputType, Int } from '@nestjs/graphql';
 
 @InputType()
 export class ProfileLinkCreateInput {
@@ -11,6 +11,9 @@ export class ProfileLinkCreateInput {
 
 @InputType()
 export class ProfileLinkUpdateInput {
+  @Field(() => Int)
+  id!: number;
+
   @Field({ nullable: true })
   name?: string;
 
@@ -20,9 +23,9 @@ export class ProfileLinkUpdateInput {
 
 @InputType()
 export class ProfileLinksPatchInput {
-  @Field(() => ProfileLinkCreateInput, { nullable: true })
-  create?: ProfileLinkCreateInput;
+  @Field(() => [ProfileLinkCreateInput], { nullable: true })
+  create?: ProfileLinkCreateInput[];
 
-  @Field(() => ProfileLinkUpdateInput, { nullable: true })
-  update?: ProfileLinkUpdateInput;
+  @Field(() => [ProfileLinkUpdateInput], { nullable: true })
+  update?: ProfileLinkUpdateInput[];
 }

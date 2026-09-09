@@ -2,7 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
-      "@prisma/*": ["./prisma/*"]
+      "@prisma-generated/*": ["./prisma/generated/*"]
     },
     "module": "esnext",
     "esModuleInterop": true,
@@ -20,6 +20,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "strictBindCallApply": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": ["vitest/globals", "node"]
   }
 }

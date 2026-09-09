@@ -12,6 +12,10 @@ import {
   SkillsService,
 } from '@/domains/skills/skills.service';
 import { PrismaService } from '@/prisma/prisma.service';
+import {
+  ProfileLinksPatchData,
+  ProfileLinksService,
+} from '../profile-links/profile-links.service';
 
 interface ProfileCreateData {
   name: string;
@@ -20,6 +24,7 @@ interface ProfileCreateData {
 interface ProfileUpdateData {
   name?: string;
   description?: string;
+  links?: ProfileLinksPatchData;
   projects?: ProjectsPatchData;
   experiences?: ExperiencesPatchData;
   skills?: SkillsPatchData;
@@ -29,6 +34,7 @@ interface ProfileUpdateData {
 export class ProfilesService {
   constructor(
     private readonly prisma: PrismaService,
+    private readonly profileLinksService: ProfileLinksService,
     private readonly projectsService: ProjectsService,
     private readonly experiencesService: ExperiencesService,
     private readonly skillsService: SkillsService,
@@ -40,12 +46,16 @@ export class ProfilesService {
 
   async update(id: number, data: ProfileUpdateData) {
     return this.prisma.$transaction(async (tx) => {
-      const { name, description, projects, experiences, skills } = data;
+      const { name, links, description, projects, experiences, skills } = data;
 
       await tx.profile.update({
         where: { id },
         data: { name, description },
       });
+
+      if (links) {
+        await this.profileLinksService.patch(id, links, tx);
+      }
 
       if (projects) {
         await this.projectsService.patch(id, projects, tx);
