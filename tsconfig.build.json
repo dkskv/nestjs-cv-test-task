@@ -6,6 +6,7 @@
     "dist",
     "prisma",
     "prisma.config.ts",
+    "vitest.config.e2e.ts",
     "**/*spec.ts"
   ]
 }

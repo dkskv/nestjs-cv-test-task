@@ -1,3 +1,41 @@
+## Quick Start (Development)
+
+### 1. Настроить PostgreSQL
+
+Указать `DATABASE_URL` в `.env`.
+
+PostgreSQL можно установить и запустить самостоятельно либо развернуть через Docker Compose:
+
+```bash
+docker compose up -d
+```
+
+### 2. Установить зависимости
+
+```bash
+npm i
+```
+
+### 3. Подготовить базу данных
+
+Сгенерировать Prisma Client, применить миграции и выполнить seed:
+
+```bash
+npm run prepare:dev
+```
+
+### 4. Запустить сервер
+
+```bash
+npm run start
+```
+
+Apollo Sandbox доступен по адресу:
+
+```text
+http://localhost:3000/graphql
+```
+
 ## Обоснование архитектурных решений
 
 ### DataLoader
