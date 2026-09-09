@@ -10,9 +10,9 @@ import {
 import { ExperienceDto } from '@/domains/experience/experience.types';
 import { ProjectDto } from '@/domains/projects/projects.types';
 import { SkillDto } from '@/domains/skills/skills.types';
-import { ExperienceLoader } from './experience.loader';
-import { ProjectsLoader } from './projects.loader';
-import { SkillsLoader } from './skills.loader';
+import { ExperienceLoader } from './loaders/experience.loader';
+import { ProjectsLoader } from './loaders/projects.loader';
+import { SkillsLoader } from './loaders/skills.loader';
 import { ProfilesService } from './profiles.service';
 import { CreateProfileInput, ProfileDto } from './profiles.types';
 

@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { ExperienceModule } from '@/domains/experience/experience.module';
 import { ProjectsModule } from '@/domains/projects/projects.module';
 import { SkillsModule } from '@/domains/skills/skills.module';
-import { ExperienceLoader } from './experience.loader';
-import { ProjectsLoader } from './projects.loader';
-import { SkillsLoader } from './skills.loader';
+import { ExperienceLoader } from './loaders/experience.loader';
+import { ProjectsLoader } from './loaders/projects.loader';
+import { SkillsLoader } from './loaders/skills.loader';
 import { ProfilesResolver } from './profiles.resolver';
 import { ProfilesService } from './profiles.service';
 
