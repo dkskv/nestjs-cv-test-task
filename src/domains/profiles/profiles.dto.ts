@@ -2,14 +2,11 @@ import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import {
   ExperienceDto,
   ExperiencesPatchInput,
-} from '@/domains/experiences/experiences.dto';
-import {
-  ProjectDto,
-  ProjectsPatchInput,
-} from '@/domains/projects/projects.dto';
-import { SkillDto, SkillsPatchInput } from '@/domains/skills/skills.dto';
-import { LinkDto } from '@/shared/dto/link.dto';
-import { ProfileLinksPatchInput } from '../profile-links/profile-links.dto';
+} from './../experiences/experiences.dto.js';
+import { ProjectDto, ProjectsPatchInput } from './../projects/projects.dto.js';
+import { SkillDto, SkillsPatchInput } from './../skills/skills.dto.js';
+import { LinkDto } from '../../shared/dto/link.dto.js';
+import { ProfileLinksPatchInput } from '../profile-links/profile-links.dto.js';
 
 @ObjectType()
 export class ProfileDto {

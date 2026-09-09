@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ProjectLinksService } from './project-links.service';
+import { ProjectLinksService } from './project-links.service.js';
 
 @Module({
   providers: [ProjectLinksService],

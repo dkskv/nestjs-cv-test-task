@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
-import { ExperiencesModule } from '@/domains/experiences/experiences.module';
-import { ProfileLinksModule } from '@/domains/profile-links/profile-links.module';
-import { ProjectsModule } from '@/domains/projects/projects.module';
-import { SkillsModule } from '@/domains/skills/skills.module';
-import { ExperiencesLoader } from './loaders/experiences.loader';
-import { ProfileLinksLoader } from './loaders/profile-links.loader';
-import { ProjectsLoader } from './loaders/projects.loader';
-import { SkillsLoader } from './loaders/skills.loader';
-import { ProfilesResolver } from './profiles.resolver';
-import { ProfilesService } from './profiles.service';
+import { ExperiencesModule } from './../experiences/experiences.module.js';
+import { ProfileLinksModule } from './../profile-links/profile-links.module.js';
+import { ProjectsModule } from './../projects/projects.module.js';
+import { SkillsModule } from './../skills/skills.module.js';
+import { ExperiencesLoader } from './loaders/experiences.loader.js';
+import { ProfileLinksLoader } from './loaders/profile-links.loader.js';
+import { ProjectsLoader } from './loaders/projects.loader.js';
+import { SkillsLoader } from './loaders/skills.loader.js';
+import { ProfilesResolver } from './profiles.resolver.js';
+import { ProfilesService } from './profiles.service.js';
 
 @Module({
   imports: [

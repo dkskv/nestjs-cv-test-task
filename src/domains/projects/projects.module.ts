@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ProjectLinksModule } from '@/domains/project-links/project-links.module';
-import { ProjectLinkLoader } from '@/domains/project-links/project-link.loader';
-import { ProjectsResolver } from './projects.resolver';
-import { ProjectsService } from './projects.service';
+import { ProjectLinksModule } from './../project-links/project-links.module.js';
+import { ProjectLinkLoader } from './../project-links/project-link.loader.js';
+import { ProjectsResolver } from './projects.resolver.js';
+import { ProjectsService } from './projects.service.js';
 
 @Module({
   imports: [ProjectLinksModule],

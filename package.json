@@ -5,6 +5,7 @@
   "author": "Dmitry Kuskov",
   "private": true,
   "license": "UNLICENSED",
+  "type": "module",
   "scripts": {
     "prisma:generate": "prisma generate",
     "prisma:migrate:dev": "prisma migrate dev",

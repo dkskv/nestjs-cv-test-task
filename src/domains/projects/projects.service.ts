@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma-generated/client';
 import {
   ProjectLinkCreateData,
   ProjectLinkPatchData,
   ProjectLinksService,
-} from '@/domains/project-links/project-links.service';
-import { PrismaService } from '@/prisma/prisma.service';
+} from './../project-links/project-links.service.js';
+import { Prisma } from '../../../prisma/generated/client.js';
+import { PrismaService } from '../../prisma/prisma.service.js';
 
 export interface ProjectCreateData {
   name: string;

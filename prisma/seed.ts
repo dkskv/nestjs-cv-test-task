@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma-generated/client';
-import { profileSeed } from './seed-data';
+import { PrismaClient } from './generated/client.js';
+import { profileSeed } from './seed-data.js';
 import { PrismaPg } from '@prisma/adapter-pg';
 
 const prisma = new PrismaClient({

@@ -1,7 +1,7 @@
 import { Parent, ResolveField, Resolver } from '@nestjs/graphql';
-import { LinkDto } from '@/shared/dto/link.dto';
-import { ProjectLinkLoader } from '@/domains/project-links/project-link.loader';
-import { ProjectDto } from './projects.dto';
+import { LinkDto } from '../../shared/dto/link.dto.js';
+import { ProjectLinkLoader } from '../project-links/project-link.loader.js';
+import { ProjectDto } from './projects.dto.js';
 
 @Resolver(() => ProjectDto)
 export class ProjectsResolver {

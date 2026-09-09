@@ -1,4 +1,4 @@
-import { PrismaService } from '../../src/prisma/prisma.service';
+import { PrismaService } from '../../src/prisma/prisma.service.js';
 
 export async function cleanDatabase(prisma: PrismaService): Promise<void> {
   await prisma.$executeRawUnsafe(`

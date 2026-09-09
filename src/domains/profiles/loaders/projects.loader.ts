@@ -1,8 +1,8 @@
 import DataLoader from 'dataloader';
 import { Injectable, Scope } from '@nestjs/common';
-import { ProjectDto } from '@/domains/projects/projects.dto';
-import { ProjectsService } from '@/domains/projects/projects.service';
-import { groupByToMap } from '@/shared/lib/group-by-to-map';
+import { ProjectDto } from '../../projects/projects.dto.js';
+import { ProjectsService } from '../../projects/projects.service.js';
+import { groupByToMap } from '../../../shared/lib/group-by-to-map.js';
 
 @Injectable({ scope: Scope.REQUEST })
 export class ProjectsLoader extends DataLoader<number, ProjectDto[]> {

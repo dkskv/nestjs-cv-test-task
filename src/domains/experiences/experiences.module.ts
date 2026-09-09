@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ExperiencesService } from './experiences.service';
+import { ExperiencesService } from './experiences.service.js';
 
 @Module({
   providers: [ExperiencesService],

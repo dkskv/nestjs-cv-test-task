@@ -7,20 +7,20 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { ExperienceDto } from '@/domains/experiences/experiences.dto';
-import { LinkDto } from '@/shared/dto/link.dto';
-import { ProjectDto } from '@/domains/projects/projects.dto';
-import { SkillDto } from '@/domains/skills/skills.dto';
-import { ExperiencesLoader } from './loaders/experiences.loader';
-import { ProfileLinksLoader } from './loaders/profile-links.loader';
-import { ProjectsLoader } from './loaders/projects.loader';
-import { SkillsLoader } from './loaders/skills.loader';
-import { ProfilesService } from './profiles.service';
+import { ExperienceDto } from './../experiences/experiences.dto.js';
+import { LinkDto } from '../../shared/dto/link.dto.js';
+import { ProjectDto } from './../projects/projects.dto.js';
+import { SkillDto } from './../skills/skills.dto.js';
+import { ExperiencesLoader } from './loaders/experiences.loader.js';
+import { ProfileLinksLoader } from './loaders/profile-links.loader.js';
+import { ProjectsLoader } from './loaders/projects.loader.js';
+import { SkillsLoader } from './loaders/skills.loader.js';
+import { ProfilesService } from './profiles.service.js';
 import {
   ProfileCreateInput,
   ProfileDto,
   ProfileUpdateInput,
-} from './profiles.dto';
+} from './profiles.dto.js';
 
 @Resolver(() => ProfileDto)
 export class ProfilesResolver {

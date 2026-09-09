@@ -2,8 +2,8 @@ import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import {
   ProjectLinkCreateInput,
   ProjectLinkPatchInput,
-} from '@/domains/project-links/project-links.dto';
-import { LinkDto } from '@/shared/dto/link.dto';
+} from '../project-links/project-links.dto.js';
+import { LinkDto } from '../../shared/dto/link.dto.js';
 
 @ObjectType()
 export class ProjectDto {

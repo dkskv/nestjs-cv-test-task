@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma-generated/client';
-import { PrismaService } from '@/prisma/prisma.service';
+import { Prisma } from '../../../prisma/generated/client.js';
+import { PrismaService } from '../../prisma/prisma.service.js';
 
 export interface SkillsPatchData {
   create?: string[];

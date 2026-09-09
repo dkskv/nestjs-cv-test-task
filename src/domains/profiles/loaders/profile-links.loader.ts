@@ -1,8 +1,8 @@
 import DataLoader from 'dataloader';
 import { Injectable, Scope } from '@nestjs/common';
-import { ProfileLinksService } from '@/domains/profile-links/profile-links.service';
-import { LinkDto } from '@/shared/dto/link.dto';
-import { groupByToMap } from '@/shared/lib/group-by-to-map';
+import { ProfileLinksService } from '../../profile-links/profile-links.service.js';
+import { LinkDto } from '../../../shared/dto/link.dto.js';
+import { groupByToMap } from '../../../shared/lib/group-by-to-map.js';
 
 @Injectable({ scope: Scope.REQUEST })
 export class ProfileLinksLoader extends DataLoader<number, LinkDto[]> {

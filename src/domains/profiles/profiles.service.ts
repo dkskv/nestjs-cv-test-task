@@ -2,20 +2,17 @@ import { Injectable } from '@nestjs/common';
 import {
   ExperiencesPatchData,
   ExperiencesService,
-} from '@/domains/experiences/experiences.service';
+} from './../experiences/experiences.service.js';
 import {
   ProjectsPatchData,
   ProjectsService,
-} from '@/domains/projects/projects.service';
-import {
-  SkillsPatchData,
-  SkillsService,
-} from '@/domains/skills/skills.service';
-import { PrismaService } from '@/prisma/prisma.service';
+} from './../projects/projects.service.js';
+import { SkillsPatchData, SkillsService } from './../skills/skills.service.js';
 import {
   ProfileLinksPatchData,
   ProfileLinksService,
-} from '../profile-links/profile-links.service';
+} from '../profile-links/profile-links.service.js';
+import { PrismaService } from '../../prisma/prisma.service.js';
 
 interface ProfileCreateData {
   name: string;
