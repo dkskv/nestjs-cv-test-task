@@ -1,41 +1,83 @@
 export const profileSeed = {
-  name: 'Profile 1',
-  description: 'Profile description placeholder.',
+  name: 'Кусков Дмитрий',
+  description:
+    'Fullstack Developer с сильной экспертизой во frontend и фокусом на развитии в backend',
+
+  links: [
+    { name: 'GitHub', url: 'https://github.com/dkskv' },
+    { name: 'LeetCode', url: 'https://leetcode.com/dkskv' },
+  ],
+
+  skills: ['TypeScript', 'React', 'NestJS', 'GraphQL', 'PostgreSQL', 'Docker'],
+
   projects: [
     {
-      name: 'Project 1',
+      name: 'Конструктор BI-приложений',
       link: {
-        name: 'Project 1 link',
-        url: 'https://example.com/project-1',
+        name: 'Сайт продукта',
+        url: 'https://infomaximum.ru/product',
       },
     },
     {
-      name: 'Project 2',
+      name: 'JS-трекер пользовательской активности',
       link: {
-        name: 'Project 2 link',
-        url: 'https://example.com/project-2',
+        name: 'Сайт продукта',
+        url: 'https://infomaximum.ru/product',
+      },
+    },
+    {
+      name: 'Система учета рабочего времени Timesheet',
+      link: {
+        name: 'Сайт продукта',
+        url: 'https://infomaximum.ru/product',
+      },
+    },
+    {
+      name: 'Развитие open source SDK',
+      link: {
+        name: 'Ссылка',
+        url: 'https://github.com/Infomaximum/widget-sdk',
+      },
+    },
+    {
+      name: 'Система инвентаризации (NestJS + GraphQL + TypeORM)',
+      link: {
+        name: 'Pet-проект',
+        url: 'https://github.com/dkskv/inventory',
+      },
+    },
+    {
+      name: 'Backend сайта строительной компании (Express + Google sheets)',
+      link: {
+        name: 'Pet-проект',
+        url: 'https://github.com/dkskv/construction-works-backend',
       },
     },
   ],
+
   experiences: [
     {
-      company: 'Company 1',
-      position: 'Position 1',
-      startedAt: new Date('2020-01-01'),
-      endedAt: new Date('2022-01-01'),
-      achievements: 'Achievement 1',
+      company: 'Инфомаксимум',
+      position: 'Frontend-разработчик',
+      startedAt: new Date('2019-09-01'),
+      endedAt: new Date('2023-04-01'),
+      achievements:
+        'Разрабатывал B2B-продукты для крупных корпоративных клиентов',
     },
     {
-      company: 'Company 2',
-      position: 'Position 2',
-      startedAt: new Date('2022-02-01'),
-      endedAt: new Date('2024-02-01'),
-      achievements: 'Achievement 2',
+      company: 'Инфомаксимум',
+      position: 'Лидер команды Frontend-разработки',
+      startedAt: new Date('2023-05-01'),
+      endedAt: new Date('2026-05-01'),
+      achievements:
+        'Технически лидировал frontend-команду и проектировал масштабируемую архитектуру React/TypeScript-продуктов',
+    },
+    {
+      company: '—',
+      position: 'Backend/fullstack разработчик',
+      startedAt: new Date('2026-06-01'),
+      endedAt: null,
+      achievements: 'Развиваю backend-компетенции',
     },
   ],
-  links: [
-    { name: 'Profile link 1', url: 'https://example.com/profile-1' },
-    { name: 'Profile link 2', url: 'https://example.com/profile-2' },
-  ],
-  skills: ['Skill 1', 'Skill 2'],
 };
